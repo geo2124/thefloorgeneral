@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BasketballRouteImport } from './routes/basketball'
 import { Route as CardsRouteImport } from './routes/cards'
+import { Route as DuelRouteImport } from './routes/duel'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const CardsRoute = CardsRouteImport.update({
   path: '/cards',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DuelRoute = DuelRouteImport.update({
+  id: '/duel',
+  path: '/duel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/basketball': typeof BasketballRoute
   '/cards': typeof CardsRoute
+  '/duel': typeof DuelRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/basketball': typeof BasketballRoute
   '/cards': typeof CardsRoute
+  '/duel': typeof DuelRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/basketball': typeof BasketballRoute
   '/cards': typeof CardsRoute
+  '/duel': typeof DuelRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/basketball' | '/cards'
+  fullPaths: '/' | '/basketball' | '/cards' | '/duel'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/basketball' | '/cards'
-  id: '__root__' | '/' | '/basketball' | '/cards'
+  to: '/' | '/basketball' | '/cards' | '/duel'
+  id: '__root__' | '/' | '/basketball' | '/cards' | '/duel'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BasketballRoute: typeof BasketballRoute
   CardsRoute: typeof CardsRoute
+  DuelRoute: typeof DuelRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CardsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/duel': {
+      id: '/duel'
+      path: '/duel'
+      fullPath: '/duel'
+      preLoaderRoute: typeof DuelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BasketballRoute: BasketballRoute,
   CardsRoute: CardsRoute,
+  DuelRoute: DuelRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
