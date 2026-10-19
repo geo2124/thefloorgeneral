@@ -33,10 +33,10 @@ function Cards() {
 
   return (
     <div className="space-y-8">
-      <div className="grid gap-3 md:grid-cols-[1fr_1fr_2fr]">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-[1fr_1fr_2fr]">
         <div className="panel p-4"><div className="text-xs text-muted-foreground">Collected</div><div className="font-display text-3xl">{s.owned.length}<span className="text-muted-foreground">/{CARDS.length}</span></div></div>
         <div className="panel p-4"><div className="text-xs text-muted-foreground">Completion</div><div className="font-display text-3xl text-primary">{pct}%</div></div>
-        <div className="panel p-4">
+        <div className="panel col-span-2 p-4 md:col-span-1">
           <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground"><span>Active Duel lineup ({s.lineup.length}/{MAX_LINEUP})</span><Link to="/duel" className="text-primary">Go to Duel →</Link></div>
           <div className="flex gap-2">
             {Array.from({ length: MAX_LINEUP }).map((_, i) => {
