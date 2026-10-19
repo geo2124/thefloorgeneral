@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BasketballRouteImport } from './routes/basketball'
+import { Route as CardsRouteImport } from './routes/cards'
+import { Route as CareerRouteImport } from './routes/career'
+import { Route as ClubWarsRouteImport } from './routes/club-wars'
+import { Route as DuelRouteImport } from './routes/duel'
+import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as RewardsRouteImport } from './routes/rewards'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BasketballRoute = BasketballRouteImport.update({
+  id: '/basketball',
+  path: '/basketball',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CardsRoute = CardsRouteImport.update({
+  id: '/cards',
+  path: '/cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareerRoute = CareerRouteImport.update({
+  id: '/career',
+  path: '/career',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClubWarsRoute = ClubWarsRouteImport.update({
+  id: '/club-wars',
+  path: '/club-wars',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DuelRoute = DuelRouteImport.update({
+  id: '/duel',
+  path: '/duel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PartnersRoute = PartnersRouteImport.update({
+  id: '/partners',
+  path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RewardsRoute = RewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/basketball': typeof BasketballRoute
+  '/cards': typeof CardsRoute
+  '/career': typeof CareerRoute
+  '/club-wars': typeof ClubWarsRoute
+  '/duel': typeof DuelRoute
+  '/partners': typeof PartnersRoute
+  '/profile': typeof ProfileRoute
+  '/rewards': typeof RewardsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/basketball': typeof BasketballRoute
+  '/cards': typeof CardsRoute
+  '/career': typeof CareerRoute
+  '/club-wars': typeof ClubWarsRoute
+  '/duel': typeof DuelRoute
+  '/partners': typeof PartnersRoute
+  '/profile': typeof ProfileRoute
+  '/rewards': typeof RewardsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/basketball': typeof BasketballRoute
+  '/cards': typeof CardsRoute
+  '/career': typeof CareerRoute
+  '/club-wars': typeof ClubWarsRoute
+  '/duel': typeof DuelRoute
+  '/partners': typeof PartnersRoute
+  '/profile': typeof ProfileRoute
+  '/rewards': typeof RewardsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/basketball'
+    | '/cards'
+    | '/career'
+    | '/club-wars'
+    | '/duel'
+    | '/partners'
+    | '/profile'
+    | '/rewards'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/basketball'
+    | '/cards'
+    | '/career'
+    | '/club-wars'
+    | '/duel'
+    | '/partners'
+    | '/profile'
+    | '/rewards'
+  id:
+    | '__root__'
+    | '/'
+    | '/basketball'
+    | '/cards'
+    | '/career'
+    | '/club-wars'
+    | '/duel'
+    | '/partners'
+    | '/profile'
+    | '/rewards'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BasketballRoute: typeof BasketballRoute
+  CardsRoute: typeof CardsRoute
+  CareerRoute: typeof CareerRoute
+  ClubWarsRoute: typeof ClubWarsRoute
+  DuelRoute: typeof DuelRoute
+  PartnersRoute: typeof PartnersRoute
+  ProfileRoute: typeof ProfileRoute
+  RewardsRoute: typeof RewardsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/basketball': {
+      id: '/basketball'
+      path: '/basketball'
+      fullPath: '/basketball'
+      preLoaderRoute: typeof BasketballRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cards': {
+      id: '/cards'
+      path: '/cards'
+      fullPath: '/cards'
+      preLoaderRoute: typeof CardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/career': {
+      id: '/career'
+      path: '/career'
+      fullPath: '/career'
+      preLoaderRoute: typeof CareerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/club-wars': {
+      id: '/club-wars'
+      path: '/club-wars'
+      fullPath: '/club-wars'
+      preLoaderRoute: typeof ClubWarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/duel': {
+      id: '/duel'
+      path: '/duel'
+      fullPath: '/duel'
+      preLoaderRoute: typeof DuelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/partners': {
+      id: '/partners'
+      path: '/partners'
+      fullPath: '/partners'
+      preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rewards': {
+      id: '/rewards'
+      path: '/rewards'
+      fullPath: '/rewards'
+      preLoaderRoute: typeof RewardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BasketballRoute: BasketballRoute,
+  CardsRoute: CardsRoute,
+  CareerRoute: CareerRoute,
+  ClubWarsRoute: ClubWarsRoute,
+  DuelRoute: DuelRoute,
+  PartnersRoute: PartnersRoute,
+  ProfileRoute: ProfileRoute,
+  RewardsRoute: RewardsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
