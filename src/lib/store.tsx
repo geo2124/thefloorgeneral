@@ -120,8 +120,8 @@ function useProvideStore() {
     setAppearance: (a: Partial<Appearance>) => setS((p) => ({ ...p, appearance: { ...p.appearance, ...a } })),
     startTraining: (id: TrainingCategory["id"]) => {
       const cat = TRAINING.find((t) => t.id === id)!;
-      if (s.training) return toast.error("A training session is already active.");
-      if (s.credits < cat.cost) return toast.error("Not enough Training Credits. Earn more from missions and Duels.");
+      if (s.training) { toast.error("A training session is already active."); return; }
+      if (s.credits < cat.cost) { toast.error("Not enough Training Credits. Earn more from missions and Duels."); return; }
       setS((p) => ({ ...p, credits: p.credits - cat.cost, training: { category: id, endsAt: Date.now() + cat.demoSeconds * 1000 }, flags: { ...p.flags, training: true } }));
       toast.success(`${cat.name} training started`, { description: `−${cat.cost} credits · demo-accelerated` });
     },
@@ -131,7 +131,7 @@ function useProvideStore() {
         const cat = TRAINING.find((t) => t.id === p.training!.category)!;
         const attrs = { ...p.attrs };
         cat.attrs.forEach((k) => (attrs[k] = Math.min(99, attrs[k] + 2)));
-        const gain = cat.attrs.map((k) => `+2 ${k[0].toUpperCase() + k.slice(1)}`).join(", ");
+        const gain = cat.attrs.map((k) => `+2 ${k[0]!.toUpperCase() + k.slice(1)}`).join(", ");
         toast.success("Training complete", { description: `${gain} · +${cat.xp} XP` });
         return reward(
           { ...p, attrs, xp: p.xp + cat.xp, training: null, trainingsDone: p.trainingsDone + 1, trainingHistory: [{ category: cat.name, at: Date.now(), gain }, ...p.trainingHistory].slice(0, 10) },
@@ -140,7 +140,7 @@ function useProvideStore() {
       });
     },
     toggleLineup: (id: string) => {
-      if (!s.lineup.includes(id) && s.lineup.length >= 3) return toast.error("Lineup full: remove a card first (3-card limit).");
+      if (!s.lineup.includes(id) && s.lineup.length >= 3) { toast.error("Lineup full: remove a card first (3-card limit)."); return; }
       setS((p) => ({ ...p, lineup: toggleLineup(p.lineup, id) }));
     },
     submitPrediction: (chId: string, pick: string) => {

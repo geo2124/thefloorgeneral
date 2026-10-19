@@ -110,7 +110,7 @@ function Cards() {
               <div className="space-y-3">
                 <span className={cn("inline-block rounded border px-2 py-0.5 text-xs font-bold", RARITY_CLASS[card.rarity])}>{card.rarity}</span>
                 <div><div className="text-xs text-muted-foreground">Gameplay ability</div><p className="text-sm font-semibold">{card.ability}</p></div>
-                {Object.entries(card.boost).map(([k, v]) => <StatBar key={k} label={`${k[0].toUpperCase() + k.slice(1)} boost`} value={v!} max={10} accent />)}
+                {Object.entries(card.boost).map(([k, v]) => <StatBar key={k} label={`${k[0]!.toUpperCase() + k.slice(1)} boost`} value={v!} max={10} accent />)}
                 <p className="text-xs text-muted-foreground">{s.owned.includes(card.id) ? "In your collection" : "Not yet collected — earn through missions and milestones"}</p>
               </div>
             </div>

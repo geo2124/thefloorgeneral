@@ -49,7 +49,7 @@ export function SectionTitle({ title, action, sub }: { title: string; action?: R
   );
 }
 
-export function StatBar({ label, value, max = 99, accent }: { label: string; value: number; max?: number; accent?: boolean }) {
+export function StatBar({ label, value, max = 99, accent }: { label: string; value: number; max?: number; accent?: boolean | undefined }) {
   return (
     <div>
       <div className="mb-1 flex justify-between text-xs">

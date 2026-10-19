@@ -107,8 +107,8 @@ export function simulateDuel(you: Side, opp: Side, seed: number, possessionsPerS
   while (ys === os && guard < 6) {
     run("you", you, opp);
     run("opp", opp, you);
-    ys += list[list.length - 2].pts;
-    os += list[list.length - 1].pts;
+    ys += list[list.length - 2]!.pts;
+    os += list[list.length - 1]!.pts;
     guard++;
   }
   if (ys === os) ys += 1; // final free throw

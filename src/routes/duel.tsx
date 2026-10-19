@@ -19,7 +19,7 @@ type Phase = "lobby" | "setup" | "match";
 
 function Duel() {
   const [phase, setPhase] = useState<Phase>("lobby");
-  const [opp, setOpp] = useState<Opponent>(OPPONENTS[0]);
+  const [opp, setOpp] = useState<Opponent>(OPPONENTS[0]!);
   const [mode, setMode] = useState<"Ranked" | "Friend">("Ranked");
   const [off, setOff] = useState<OffTactic>("balanced");
   const [def, setDef] = useState<DefTactic>("balanced");
@@ -45,8 +45,8 @@ function Lobby({ start }: { start: (o: Opponent, m: "Ranked" | "Friend") => void
             <div className="mt-1 flex justify-between text-[10px] text-muted-foreground">{DIVISIONS.map((d) => <span key={d.name}>{d.name}</span>)}</div>
           </div>
           <div className="flex flex-col gap-2 md:w-64">
-            <Button variant="gold" size="lg" className="h-14 text-xl" onClick={() => start(OPPONENTS[0], "Ranked")}><Swords /> Play Ranked</Button>
-            <Button variant="surface" onClick={() => start(OPPONENTS[1], "Friend")}><Users /> Challenge a Friend</Button>
+            <Button variant="gold" size="lg" className="h-14 text-xl" onClick={() => start(OPPONENTS[0]!, "Ranked")}><Swords /> Play Ranked</Button>
+            <Button variant="surface" onClick={() => start(OPPONENTS[1]!, "Friend")}><Users /> Challenge a Friend</Button>
           </div>
         </div>
       </section>
@@ -154,7 +154,7 @@ function Match({ opp, off, def, done, again }: { opp: Opponent; off: OffTactic; 
   const yourTotal = result.possessions.filter((p) => p.side === "you").length;
   const counters = result.possessions.filter((p) => p.side === "you" && p.why.includes("exploited")).length;
   const countered = result.possessions.filter((p) => p.side === "you" && p.why.includes("countered")).length;
-  const weakest = [...ATTRIBUTES].sort((a, b) => s.attrs[a.key] - s.attrs[b.key])[0];
+  const weakest = [...ATTRIBUTES].sort((a, b) => s.attrs[a.key] - s.attrs[b.key])[0]!;
 
   return (
     <div className="space-y-6">

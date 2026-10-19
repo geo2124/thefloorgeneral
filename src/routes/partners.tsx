@@ -14,7 +14,7 @@ export const Route = createFileRoute("/partners")({
 const METRICS = [["Challenge participation", "e.g. 18–30%"], ["Completed engagements", "per active fan / week"], ["Reward redemptions", "approved offers"], ["Unique participants", "per campaign"], ["Repeat participation", "week-over-week"], ["Impressions", "where measurable"]];
 
 function Partners() {
-  const [sel, setSel] = useState(PARTNER_PACKAGES[1].id);
+  const [sel, setSel] = useState(PARTNER_PACKAGES[1]!.id);
   const p = PARTNER_PACKAGES.find((x) => x.id === sel)!;
   return (
     <div className="space-y-8">

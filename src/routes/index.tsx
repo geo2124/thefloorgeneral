@@ -18,7 +18,7 @@ function Home() {
   const { s, claimMission, trainingRemaining } = useStore();
   const [open, setOpen] = useState<string | null>(null);
   const lvl = levelFromXp(s.xp);
-  const featured = GAMES[0];
+  const featured = GAMES[0]!;
   const nextMission = MISSIONS.find((m) => !s.flags[m.flag]);
   const board = [...DEMO_USERS, { name: s.username, rating: s.rating, iq: 0, xp: s.xp, club: s.club ?? "" }].sort((a, b) => b.rating - a.rating);
   const myRank = board.findIndex((u) => u.name === s.username) + 1;
