@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { toast } from "sonner";
 import {
   CHALLENGES,
@@ -248,6 +248,3 @@ export function useStore() {
   return v;
 }
 
-// unused helpers kept small
-export const useNoop = () => useCallback(() => {}, []);
-export const useMemoNoop = () => useMemo(() => null, []);
